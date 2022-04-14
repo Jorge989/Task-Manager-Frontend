@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { NewTaskComponent } from './pages/new-task/new-task.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { WebReqInterceptor } from './web-request.interceptor';
+import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,6 +17,7 @@ import { WebReqInterceptor } from './web-request.interceptor';
     NewListComponent,
     NewTaskComponent,
     LoginPageComponent,
+    SignupPageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, MatIconModule],
   providers: [
