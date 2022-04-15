@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 import {
   HttpInterceptor,
   HttpRequest,
@@ -16,7 +15,7 @@ import { catchError, tap, switchMap } from 'rxjs/operators';
 export class WebReqInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService) {}
 
-  refreshingAccessToken: boolean = false;
+  // refreshingAccessToken: boolean;
 
   accessTokenRefreshed: Subject<any> = new Subject();
 
@@ -28,34 +27,12 @@ export class WebReqInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse): any => {
         console.log(error);
-        if (error.status === 401 && !this.refreshAccessToken) {
+        if (error.status === 401) {
           //401 error so we are unathorized
-          this.refreshAccessToken().pipe(
-            switchMap(() => {
-              request = this.addAuthHeader(request);
-              return next.handle(request);
-            }),
-            catchError((err: any) => {
-              console.log(err);
-              this.authService.logout();
-              return empty();
-            })
-          );
-
           //refresh the access token
+          this.authService.logout();
         }
         return throwError(() => new Error('test'));
-      })
-    );
-  }
-  refreshAccessToken(): any {
-    this.refreshingAccessToken = true;
-    //we want to call a method in the service to send a request
-    //to the refresh the access token
-    return this.authService.getNewAccessToken().pipe(
-      tap(() => {
-        this.refreshingAccessToken = false;
-        console.log('Access Token Refeshed!');
       })
     );
   }

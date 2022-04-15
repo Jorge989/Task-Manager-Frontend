@@ -30,6 +30,15 @@
   background-color: rgb(229, 229, 229);
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
+
+  .top-bar {
+    display: flex;
+    margin-bottom: 20px;
+    .title {
+      flex-grow: 1;
+      margin: 0;
+    }
+  }
 }
 
 .list-menu {
@@ -72,10 +81,24 @@
   }
   &:hover {
     box-shadow: 0 0 0 5px #eeeeee;
+    .task-buttons {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
   &.completed {
     text-decoration: line-through;
     opacity: 0.8;
+  }
+  .task-text {
+    display: flex;
+    flex-grow: 1;
+  }
+  .task-buttons {
+    transition: opacity 0.2s, transform 0.2s;
+    opacity: 0;
+    transform: scale(0.85);
+    z-index: 999;
   }
 }
 .circle-add-button {
