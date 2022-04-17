@@ -1,7 +1,7 @@
 <div class="centered-content">
   <div class="task-manager-container">
     <div class="sidebar has-background-white">
-      <h1 class="title has-text-primary">Lists</h1>
+      <h1 class="title has-text-primary">Listas</h1>
 
       <div class="list-menu">
         <a
@@ -15,14 +15,14 @@
       </div>
 
       <button class="button is-primary has-text-white" routerLink="/new-list">
-        + New List
+        + Nova Lista
       </button>
     </div>
 
     <div class="task-list-container has-background-light">
       <div *ngIf="tasks">
         <div class="top-bar">
-          <h1 class="title has-text-primary">Tasks</h1>
+          <h1 class="title has-text-primary">Tarefas</h1>
           <div class="dropdown is-hoverable is-right">
             <div class="dropdown-trigger">
               <button
@@ -41,13 +41,13 @@
                   [routerLink]="['/edit-list', selectedListId]"
                   class="dropdown-item"
                 >
-                  Edit
+                  Editar
                 </a>
                 <a
                   (click)="onDeleteListClick()"
                   class="dropdown-item has-text-danger"
                 >
-                  Delete
+                  Deletar
                 </a>
               </div>
             </div>
@@ -87,7 +87,8 @@
         </div>
 
         <h3 class="empty-state-text" *ngIf="tasks.length === 0">
-          There are no tasks here! Click the add button to create a new task.
+          Não há tarefas aqui! Clique no botão adicionar para criar uma nova
+          tarefa.
         </h3>
 
         <button
@@ -105,7 +106,7 @@
       </div>
 
       <div *ngIf="!tasks">
-        <h3 class="empty-state-text">Please select a list from the sidebar</h3>
+        <h3 class="empty-state-text">Selecione uma lista na barra lateral</h3>
       </div>
     </div>
   </div>
